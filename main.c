@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 02:35:26 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 03:18:12 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/10/20 19:51:13 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,14 @@
 
 int	main(void)
 {
-	char	str[50];
+	int		val;
+	char	str[20];
 
-	ft_strcpy(str, "This is string.h library function");
-	puts(str);
-	ft_memset(str, '$', 7);
-	puts(str);
+	strcpy(str, "98993489");
+	val = ft_atoi(str);
+	printf("String value = %s\n Int value = %d\n", str, val);
+	strcpy(str, "tutorialspoint.com");
+	val = ft_atoi(str);
+	printf("String value = %s\n Int value = %d\n", str, val);
 	return (0);
 }

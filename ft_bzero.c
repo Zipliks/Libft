@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 23:04:16 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 18:03:42 by jsewer           ###   ########.fr       */
+/*   Created: 2021/10/20 16:43:26 by jsewer            #+#    #+#             */
+/*   Updated: 2021/10/20 17:08:33 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int character)
+void	ft_bzero(void *s, size_t n)
 {
-	return (!(character >= 0 && character <= 31) && !(character == 127));
+	unsigned char	*temp;
+	size_t			i;
+
+	i = 0;
+	temp = (unsigned char *)s;
+	while (i < n)
+	{
+		*temp++ = '\0';
+		++i;
+	}
 }

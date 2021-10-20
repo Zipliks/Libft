@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 23:04:16 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 18:03:42 by jsewer           ###   ########.fr       */
+/*   Created: 2021/10/20 19:42:49 by jsewer            #+#    #+#             */
+/*   Updated: 2021/10/20 19:53:36 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int character)
+int	ft_atoi(const char *nptr)
 {
-	return (!(character >= 0 && character <= 31) && !(character == 127));
+	int		*result;
+	size_t	i;
+
+	i = 0;
+	result = (int *)malloc(sizeof(int));
+	while (nptr)
+	{
+		if (ft_isdigit(nptr[i]))
+		{
+			*result = *nptr;
+			++i;
+		}
+	}
+	return (*result);
 }
