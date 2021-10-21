@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/16 10:00:36 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/21 16:26:02 by jsewer           ###   ########.fr       */
+/*   Created: 2021/10/21 17:45:26 by jsewer            #+#    #+#             */
+/*   Updated: 2021/10/21 18:04:58 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *s, int c)
 {
-	return (ft_islower(c) || ft_isupper(c));
+	while (*s)
+		if (*s++ == (char)c)
+			return ((char *)s - 1);
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
 }

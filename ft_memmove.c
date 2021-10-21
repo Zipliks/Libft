@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 17:22:50 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 19:37:13 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/10/21 15:47:26 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	*ft_memmove(void *dest, const void *source, size_t length)
 		while (length--)
 			*dest_out++ = *source_in++;
 	if (source_in == dest_out)
+		return (dest_out);
+	else
 		return (dest);
-	return (dest);
 }

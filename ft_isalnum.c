@@ -6,15 +6,13 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 21:09:24 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 17:49:18 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/10/21 16:25:32 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(int character)
+int	ft_isalnum(int c)
 {
-	if (ft_isalpha(character) || ft_isdigit(character))
-		return (1);
-	return (0);
+	return ((int)ft_isalpha(c) || (int)ft_isdigit(c));
 }
