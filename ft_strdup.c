@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 17:27:12 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/22 18:57:51 by jsewer           ###   ########.fr       */
+/*   Created: 2021/10/22 16:56:18 by jsewer            #+#    #+#             */
+/*   Updated: 2021/10/22 16:57:39 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *source, size_t size)
+char	*ft_strdup(const char *s)
 {
-	size_t	pos;
-	size_t	j;
+	char	*copy;
+	size_t	i;
 
-	pos = 0;
-	while (dest[pos] && pos < size)
-		pos++;
-	j = pos;
-	while (source[pos - j] && (pos + 1 < size))
+	copy = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!copy)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		dest[pos] = source[pos - j];
-		pos++;
+		copy[i] = s[i];
+		i++;
 	}
-	if (pos < size)
-		dest[pos] = '\0';
-	return (pos + ft_strlen(source));
+	copy[i] = '\0';
+	return (copy);
 }

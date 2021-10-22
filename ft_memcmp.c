@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 17:27:12 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/22 18:57:51 by jsewer           ###   ########.fr       */
+/*   Created: 2021/10/22 16:36:17 by jsewer            #+#    #+#             */
+/*   Updated: 2021/10/22 16:48:06 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *source, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	pos;
-	size_t	j;
+	unsigned char	*mem_ar1;
+	unsigned char	*mem_ar2;
 
-	pos = 0;
-	while (dest[pos] && pos < size)
-		pos++;
-	j = pos;
-	while (source[pos - j] && (pos + 1 < size))
+	mem_ar1 = (unsigned char *)s1;
+	mem_ar2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (--n && *mem_ar1 == *mem_ar2)
 	{
-		dest[pos] = source[pos - j];
-		pos++;
+		mem_ar1++;
+		mem_ar2++;
 	}
-	if (pos < size)
-		dest[pos] = '\0';
-	return (pos + ft_strlen(source));
+	return ((int)(*mem_ar1 - *mem_ar2));
 }
