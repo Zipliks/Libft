@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: apuchill <apuchill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 02:42:04 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/23 18:35:42 by jsewer           ###   ########.fr       */
+/*   Created: 2020/02/03 17:25:35 by apuchill          #+#    #+#             */
+/*   Updated: 2020/02/03 21:22:48 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+t_list	*ft_lstnew(void *content)
 {
-	return ((c == '\t') || (c == '\n') || (c == '\v') || (c == '\f') \
-	|| (c == '\r') || (c == ' '));
+	t_list	*new;
+
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
+		return (0);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

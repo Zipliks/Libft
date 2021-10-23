@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 16:49:47 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/22 17:01:52 by jsewer           ###   ########.fr       */
+/*   Created: 2020/02/07 17:37:39 by apuchill          #+#    #+#             */
+/*   Updated: 2021/10/23 18:35:20 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
+	t_list	*new_lst;
+	t_list	*elem;
 
-	i = 0;
-	j = 0;
-	if (!*little)
-		return ((char *)big);
-	while (big[i] != '\0' && i < len)
+	if (!lst)
+		return (0);
+	new_lst = 0;
+	elem = ft_lstnew(f(lst->content));
+	while (lst)
 	{
-		if (little[0] == big[i])
+		if (!elem)
 		{
-			while (little[j] != '\0' && big[i + j] == little[j] && i + j < len)
-			{
-				if (little[j + 1] == '\0')
-					return ((char *)&big[i]);
-				j++;
-			}
+			ft_lstclear(&new_lst, del);
+			return (0);
 		}
-		i++;
+		ft_lstadd_back(&new_lst, elem);
+		lst = lst->next;
 	}
-	return (NULL);
+	return (new_lst);
 }

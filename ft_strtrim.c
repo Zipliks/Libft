@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: apuchill <apuchill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/21 02:42:04 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/23 18:35:42 by jsewer           ###   ########.fr       */
+/*   Created: 2020/01/31 15:30:44 by apuchill          #+#    #+#             */
+/*   Updated: 2020/02/14 16:11:15 by apuchill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	return ((c == '\t') || (c == '\n') || (c == '\v') || (c == '\f') \
-	|| (c == '\r') || (c == ' '));
+	size_t	i;
+
+	if (!s1 || !set)
+		return (0);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strchr(set, s1[i]))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }
