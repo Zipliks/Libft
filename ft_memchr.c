@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 19:25:53 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/21 20:18:55 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/12 14:34:05 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*temp;
+	unsigned char	c_ch;
+	unsigned char	*tmp;
 
-	temp = (unsigned char *)s;
-	while (n--)
+	c_ch = c;
+	tmp = (unsigned char *)s;
+	while (n-- != 0)
 	{
-		if (*temp == (unsigned char)c)
-			return (temp);
-		temp++;
+		if (*tmp == c_ch)
+			return (tmp);
+		tmp++;
 	}
-	if (c == '\0')
-		return ((unsigned char *)s);
-	return (NULL);
+	return ((void *)0);
 }
