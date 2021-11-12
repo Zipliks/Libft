@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 17:37:39 by apuchill          #+#    #+#             */
-/*   Updated: 2021/10/23 18:35:20 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/12 13:56:58 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*elem;
+	t_list	*lst_map;
+	t_list	*tmp;
 
-	if (!lst)
-		return (0);
-	new_lst = 0;
-	elem = ft_lstnew(f(lst->content));
-	while (lst)
+	lst_map = (void *)0;
+	while (lst != (void *)0)
 	{
-		if (!elem)
+		tmp = ft_lstnew(f(lst->content));
+		if (tmp == (void *)0)
 		{
-			ft_lstclear(&new_lst, del);
-			return (0);
+			ft_lstclear(&lst_map, del);
+			return ((void *)0);
 		}
-		ft_lstadd_back(&new_lst, elem);
+		ft_lstadd_back(&lst_map, tmp);
 		lst = lst->next;
 	}
-	return (new_lst);
+	return (lst_map);
 }

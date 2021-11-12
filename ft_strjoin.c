@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apuchill <apuchill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/31 14:43:26 by apuchill          #+#    #+#             */
-/*   Updated: 2020/02/14 00:24:49 by apuchill         ###   ########.fr       */
+/*   Created: 2021/11/12 13:58:59 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/12 13:59:00 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*new_str;
-	int		i;
-	int		j;
+	size_t	pref_size;
+	size_t	suf_size;
+	char	*buf;
 
-	if (!s1 || !s2 ||
-		!(new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
-		return (0);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		new_str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		new_str[i] = s2[j];
-		i++;
-		j++;
-	}
-	new_str[i] = '\0';
-	return (new_str);
+	if (s1 == (void *)0 || s2 == (void *)0)
+		return ((void *)0);
+	pref_size = 0;
+	while (s1[pref_size] != '\0')
+		pref_size++;
+	suf_size = 0;
+	while (s2[suf_size] != '\0')
+		suf_size++;
+	buf = (char *)malloc(sizeof(char) * (pref_size + suf_size + 1));
+	if (buf == (void *)0)
+		return ((void *)0);
+	pref_size = -1;
+	while (s1[++pref_size] != '\0')
+		buf[pref_size] = s1[pref_size];
+	suf_size = -1;
+	while (s2[++suf_size] != '\0')
+		buf[pref_size + suf_size] = s2[suf_size];
+	buf[pref_size + suf_size] = '\0';
+	return (buf);
 }

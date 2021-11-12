@@ -3,40 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apuchill <apuchill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 15:23:36 by exam              #+#    #+#             */
-/*   Updated: 2020/02/14 16:42:01 by apuchill         ###   ########.fr       */
+/*   Updated: 2021/11/12 13:56:54 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static	size_t	ft_get_buf_size(int n)
+{
+	size_t	buf_size;
+
+	if (n == 0)
+		return (1);
+	buf_size = 0;
+	while (n != 0)
+	{
+		buf_size++;
+		n /= 10;
+	}
+	return (buf_size);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*str;
-	long	nbr;
-	size_t	size;
+	char	*buf;
+	size_t	buf_size;
+	size_t	sign;
 
-	nbr = n;
-	size = n > 0 ? 0 : 1;
-	nbr = nbr > 0 ? nbr : -nbr;
-	while (n)
+	buf_size = ft_get_buf_size(n);
+	sign = 0;
+	if (n < 0)
+		sign = 1;
+	buf = (char *)malloc(sizeof(char) * (buf_size + sign + 1));
+	if (buf == (void *)0)
+		return ((void *)0);
+	buf[buf_size + sign] = '\0';
+	while (0 < buf_size)
 	{
+		if (sign)
+			buf[--buf_size + sign] = (char)(48 - n % 10);
+		else
+			buf[--buf_size + sign] = (char)(48 + n % 10);
 		n /= 10;
-		size++;
 	}
-	if (!(str = (char *)malloc(size + 1)))
-		return (0);
-	*(str + size--) = '\0';
-	while (nbr > 0)
-	{
-		*(str + size--) = nbr % 10 + '0';
-		nbr /= 10;
-	}
-	if (size == 0 && str[1] == '\0')
-		*(str + size) = '0';
-	else if (size == 0 && str[1] != '\0')
-		*(str + size) = '-';
-	return (str);
+	if (sign)
+		buf[0] = '-';
+	return (buf);
 }

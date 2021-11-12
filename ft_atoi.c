@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 19:42:49 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/21 17:31:22 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/12 13:50:22 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	minus = 0;
 	i = 0;
-	while ((nptr[i] == '\t') || (nptr[i] == '\n') || (nptr[i] == '\v') ||
-			(nptr[i] == '\f') || (nptr[i] == '\r') || (nptr[i] == ' '))
+	while ((nptr[i] == '\t') || (nptr[i] == '\n') || (nptr[i] == '\v') \
+	|| (nptr[i] == '\f') || (nptr[i] == '\r') || (nptr[i] == ' '))
 		++i;
 	if (nptr[i] == '-')
 		minus = 1;
