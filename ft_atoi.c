@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 19:42:49 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/12 13:50:22 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:52:08 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,29 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	result;
-	int	minus;
-	int	i;
+	unsigned long long	result;
+	int					minus;
 
 	result = 0;
-	minus = 0;
-	i = 0;
-	while ((nptr[i] == '\t') || (nptr[i] == '\n') || (nptr[i] == '\v') \
-	|| (nptr[i] == '\f') || (nptr[i] == '\r') || (nptr[i] == ' '))
-		++i;
-	if (nptr[i] == '-')
-		minus = 1;
-	if (nptr[i] == '+' || nptr[i] == '-')
-		++i;
-	while (nptr[i] && (nptr[i] >= '0') && (nptr[i] <= '9'))
+	minus = 1;
+	while (ft_isspace(*nptr))
+		nptr++;
+	if (*nptr == '-' || *nptr == '+')
 	{
-		result *= 10;
-		result += nptr[i] - '0';
-		++i;
+		if (*nptr == '-')
+			minus *= -1;
+		nptr++;
 	}
-	if (minus)
-		return (-result);
-	else
-		return (result);
+	while (*nptr && (*nptr >= '0') && (*nptr <= '9'))
+	{
+		result = result * 10 + *nptr - '0';
+		nptr++;
+	}
+	if (result > __LONG_LONG_MAX__)
+	{
+		if (minus == 1)
+			return (-1);
+		return (0);
+	}
+	return (result * minus);
 }

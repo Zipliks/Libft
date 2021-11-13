@@ -6,13 +6,15 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 23:04:16 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 18:03:42 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:22:31 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int character)
+int	ft_isprint(int chr)
 {
-	return (!(character >= 0 && character <= 31) && !(character == 127));
+	if (chr >= 32 && chr <= 126)
+		return (1);
+	return (0);
 }

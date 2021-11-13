@@ -6,15 +6,15 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 03:03:09 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/20 03:08:35 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:32:03 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_tolower(int chr)
 {
-	if (ft_isupper(c))
-		return (c + 32);
-	return (c);
+	if (chr >= 65 && chr <= 90)
+		return (chr + 32);
+	return (chr);
 }
