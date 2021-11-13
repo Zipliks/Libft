@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:03:03 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 18:03:06 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/13 19:43:41 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (0);
 	new->content = content;
 	new->next = NULL;

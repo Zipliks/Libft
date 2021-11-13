@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vvarodi <vvarodi@student.42.fr>            +#+  +:+       +#+         #
+#    By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/01/20 22:43:16 by vvarodi           #+#    #+#              #
-#    Updated: 2020/01/21 02:34:17 by vvarodi          ###   ########.fr        #
+#    Created: 2021/11/13 20:33:16 by jsewer            #+#    #+#              #
+#    Updated: 2021/11/13 20:44:35 by jsewer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ SRC = $(shell find . -name "*.c" ! -name "*_bonus.c")
 
 SRC_BONUS = $(shell find . -name "*_bonus.c")
 
-OBJ = ${SRC:.c=.o}
+OBJS = ${SRC:.c=.o}
 
-OBJ_BONUS = ${SRC_BONUS:.c=.o}
+OBJS_BONUS = ${SRC_BONUS:.c=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
@@ -30,20 +30,22 @@ RANLIB = ranlib $(NAME)
 
 REMOVE = rm -f
 
+.PHONY: all clean fclean re
+
 all: $(NAME)
 
 $(NAME):
 	@$(COMPILE) $(SRC)
-	@$(LIB) $(OBJ)
+	@$(LIB) $(OBJS)
 	@$(RANLIB)
 
 bonus:
 	@$(COMPILE) $(SRC_BONUS)
-	@$(LIB) $(OBJ_BONUS)
+	@$(LIB) $(OBJS_BONUS)
 	@$(RANLIB)
 
 clean:
-	@$(REMOVE) $(OBJ)
+	@$(REMOVE) $(OBJS)
 
 fclean: clean
 	@$(REMOVE) $(NAME)
@@ -53,4 +55,3 @@ re: fclean all
 so:
 	gcc -fPIC -c $(SRC)
 	gcc -shared -Wl,-soname,libft.so -o libft.so *.o
-.PHONY: all clean fclean re

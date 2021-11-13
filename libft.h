@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 16:29:28 by apuchill          #+#    #+#             */
-/*   Updated: 2021/11/13 17:33:28 by jsewer           ###   ########.fr       */
+/*   Created: 2021/11/13 19:38:18 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/13 19:38:21 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,49 +26,49 @@ typedef struct s_list
 ** Part 1 - Libc functions
 */
 
-int				ft_isascii(int c);
-int				ft_isprint(int c);
-int				ft_isalpha(int c);
-int				ft_isdigit(int c);
-int				ft_isalnum(int c);
+int				ft_isascii(int chr);
+int				ft_isprint(int chr);
+int				ft_isalpha(int chr);
+int				ft_isdigit(int chr);
+int				ft_isalnum(int chr);
 
-int				ft_tolower(int c);
-int				ft_toupper(int c);
-size_t			ft_strlen(const char *s);
+int				ft_tolower(int chr);
+int				ft_toupper(int chr);
+size_t			ft_strlen(const char *str);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 
-char			*ft_strchr(const char *s, int c);
-char			*ft_strrchr(const char *s, int c);
+char			*ft_strchr(const char *str, int chr);
+char			*ft_strrchr(const char *str, int chr);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
-int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_strncmp(const char *str1, const char *str2, size_t num);
 int				ft_atoi(const char *str);
 
-void			*ft_memset(void *b, int c, size_t len);
-void			ft_bzero(void *s, size_t n);
-void			*ft_memcpy(void *dst, const void *src, size_t n);
-void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
+void			*ft_memset(void *b, int chr, size_t len);
+void			ft_bzero(void *s, size_t num);
+void			*ft_memcpy(void *dst, const void *src, size_t num);
+void			*ft_memccpy(void *dst, const void *src, int chr, size_t num);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 
-void			*ft_memchr(const void *s, int c, size_t n);
-int				ft_memcmp(const void *s1, const void *s2, size_t n);
-char			*ft_strdup(const char *s1);
+void			*ft_memchr(const void *s, int chr, size_t num);
+int				ft_memcmp(const void *s1, const void *s2, size_t num);
+char			*ft_strdup(const char *str1);
 void			*ft_calloc(size_t count, size_t size);
 
 /*
 ** Part 2 - Additional functions
 */
 
-char			*ft_itoa(int n);
-void			ft_putchar_fd(char c, int fd);
+char			*ft_itoa(int num);
+void			ft_putchar_fd(char chr, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
-void			ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_fd(int num, int fd);
 
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
-char			**ft_split(char const *s, char c);
+char			**ft_split(char const *s, char chr);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 
@@ -92,29 +92,15 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 ** Personal functions
 */
 
-void			ft_swap(int *a, int *b);
+int				ft_islower(int chr);
+int				ft_isupper(int chr);
+int				ft_isspace(int chr);
 
-int				ft_islower(int c);
-int				ft_isupper(int c);
-int				ft_iscntrl(int c);
-int				ft_isgraph(int c);
-int				ft_ispunct(int c);
-int				ft_isspace(int c);
-int				ft_isblank(int c);
-int				ft_isxdigit(int c);
+void			ft_putchar(char chr);
+void			ft_putstr(char *str);
+void			ft_putendl(char *str);
+void			ft_putnbr(int num);
 
-void			ft_putchar(char c);
-void			ft_putstr(char *s);
-void			ft_putendl(char *s);
-void			ft_putnbr(int n);
-double			ft_sqrt(double x);
-
-int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strcpy(char *dst, const char *src);
-char			*ft_strncpy(char *dst, const char *src, size_t len);
-char			*ft_strcat(char *s1, const char *s2);
-char			*ft_strncat(char *s1, const char *s2, size_t n);
-char			*ft_strstr(const char *haystack, const char *needle);
-char			*ft_strndup(const char *s1, size_t n);
 
 #endif

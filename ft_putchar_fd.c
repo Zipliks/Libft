@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 18:02:43 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 18:02:44 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/13 20:25:10 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
+	return ;
 }
