@@ -6,15 +6,15 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 23:04:16 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 17:22:31 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/17 21:31:45 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int chr)
+int	ft_isprint(int c)
 {
-	if (chr >= 32 && chr <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }

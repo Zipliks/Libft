@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:03:42 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 18:03:43 by jsewer           ###   ########.fr       */
+/*   Created: 2021/11/14 22:50:12 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/16 17:20:50 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,18 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*aux;
+	t_list	*iter;
 
-	if (!new)
+	if (new == (void *)0)
 		return ;
-	if (!*lst)
+	if (*lst)
 	{
-		*lst = new;
-		return ;
+		iter = *lst;
+		while (iter->next != (void *)0)
+			iter = iter->next;
+		iter->next = new;
 	}
-	aux = ft_lstlast(*lst);
-	aux->next = new;
+	else
+		*lst = new;
+	return ;
 }

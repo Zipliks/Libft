@@ -5,24 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:02:25 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 18:02:26 by jsewer           ###   ########.fr       */
+/*   Created: 2021/11/14 22:51:19 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/14 22:51:20 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *str, int fd)
 {
-	int	i;
+	size_t	str_size;
 
-	if (s != NULL)
-	{
-		i = 0;
-		while (s[i])
-		{
-			ft_putchar_fd(s[i], fd);
-			i++;
-		}
-	}
+	if (str == (void *)0)
+		return ;
+	str_size = 0;
+	while (str[str_size] != '\0')
+		str_size++;
+	write(fd, str, str_size);
+	return ;
 }

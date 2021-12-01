@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:03:32 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 18:03:33 by jsewer           ###   ########.fr       */
+/*   Created: 2021/11/14 22:50:25 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/16 17:19:40 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list	*aux;
+	t_list	*tmp;
 
-	if (!*lst)
-		return ;
-	while (*lst)
+	while (*lst != (void *)0)
 	{
-		aux = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = aux;
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
 	}
-	*lst = 0;
+	return ;
 }

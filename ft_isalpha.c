@@ -6,13 +6,15 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 10:00:36 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 17:33:22 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/14 22:29:02 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int chr)
+int	ft_isalpha(int ch)
 {
-	return (ft_islower(chr) || ft_isupper(chr));
+	if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+		return (1);
+	return (0);
 }

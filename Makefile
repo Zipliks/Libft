@@ -5,53 +5,68 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/13 20:33:16 by jsewer            #+#    #+#              #
-#    Updated: 2021/11/13 20:44:35 by jsewer           ###   ########.fr        #
+#    Created: 2021/11/15 17:49:19 by jsewer            #+#    #+#              #
+#    Updated: 2021/11/19 06:32:10 by jsewer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME			= libft.a
 
-SRC = $(shell find . -name "*.c" ! -name "*_bonus.c")
+HEADER			= libft.h
 
-SRC_BONUS = $(shell find . -name "*_bonus.c")
+SO				= libft.so
 
-OBJS = ${SRC:.c=.o}
+SRC 			= ft_isalpha.c		ft_isdigit.c		ft_isalnum.c		ft_isascii.c\
+				  ft_isprint.c		ft_strlen.c			ft_memset.c			ft_bzero.c\
+				  ft_memcpy.c		ft_memmove.c		ft_strlcpy.c		ft_strlcat.c\
+				  ft_toupper.c		ft_tolower.c		ft_strchr.c			ft_strrchr.c\
+				  ft_strncmp.c		ft_memchr.c			ft_memcmp.c			ft_strnstr.c\
+				  ft_atoi.c			ft_calloc.c			ft_strdup.c			ft_substr.c\
+				  ft_strjoin.c		ft_strtrim.c		ft_split.c			ft_itoa.c\
+				  ft_strmapi.c		ft_striteri.c		ft_putchar_fd.c		ft_putstr_fd.c\
+				  ft_putendl_fd.c	ft_putnbr_fd.c
 
-OBJS_BONUS = ${SRC_BONUS:.c=.o}
+SRC_BONUS		= ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c		ft_lstlast.c\
+				  ft_lstadd_back.c	ft_lstdelone.c		ft_lstclear.c		ft_lstiter.c\
+				  ft_lstmap.c
+				  
+OBJS 			= $(patsubst %.c, %.o, $(SRC))
 
-CFLAGS = -Wall -Werror -Wextra
+OBJS_BONUS		= $(patsubst %.c, %.o, $(SRC_BONUS))
 
-COMPILE = gcc $(CFLAGS) -c
+CFLAGS			= -Wall -Werror -Wextra
 
-LIB = ar rc $(NAME)
+COMPILE			= gcc
 
-RANLIB = ranlib $(NAME)
+REMOVE 			= rm -f
 
-REMOVE = rm -f
+%.o: 			%.c $(HEADER)
+				$(COMPILE) $(CFLAGS) -c $< -o $@
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus cleanso so
 
-all: $(NAME)
+$(NAME):		$(OBJS)
+				ar rcs $(NAME) $?
 
-$(NAME):
-	@$(COMPILE) $(SRC)
-	@$(LIB) $(OBJS)
-	@$(RANLIB)
+
+all:			$(NAME)
 
 bonus:
-	@$(COMPILE) $(SRC_BONUS)
-	@$(LIB) $(OBJS_BONUS)
-	@$(RANLIB)
+				@make "OBJS = $(OBJS_BONUS)" all
 
 clean:
-	@$(REMOVE) $(OBJS)
+				$(REMOVE) $(OBJS) $(OBJS_BONUS)
 
-fclean: clean
-	@$(REMOVE) $(NAME)
+fclean:			clean cleanso
+				$(REMOVE) $(NAME)
 
-re: fclean all
+cleanso:		
+				$(REMOVE) $(SO)
 
-so:
-	gcc -fPIC -c $(SRC)
-	gcc -shared -Wl,-soname,libft.so -o libft.so *.o
+re:				fclean all
+
+so: 
+				clang -fPIC -c $(SRC)
+				clang -shared -Wl,-soname,libft.so -o libft.so *.o
+				
+re: 			fclean all

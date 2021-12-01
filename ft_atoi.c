@@ -6,37 +6,37 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 19:42:49 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 17:52:08 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/16 17:43:45 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
-	unsigned long long	result;
-	int					minus;
+	unsigned long long	res;
+	int					sign;
 
-	result = 0;
-	minus = 1;
-	while (ft_isspace(*nptr))
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	res = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		if (*nptr == '-')
-			minus *= -1;
-		nptr++;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	while (*nptr && (*nptr >= '0') && (*nptr <= '9'))
+	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + *nptr - '0';
-		nptr++;
+		res = res * 10 + (*str - '0');
+		str++;
 	}
-	if (result > __LONG_LONG_MAX__)
+	if (res > FT_ATOI_LONG_MAX)
 	{
-		if (minus == 1)
+		if (sign == 1)
 			return (-1);
 		return (0);
 	}
-	return (result * minus);
+	return (res * sign);
 }

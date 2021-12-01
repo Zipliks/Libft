@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 18:03:03 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 19:43:41 by jsewer           ###   ########.fr       */
+/*   Created: 2021/11/14 22:50:49 by jsewer            #+#    #+#             */
+/*   Updated: 2021/11/14 22:50:50 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new;
+	t_list	*buf;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	buf = (t_list *)malloc(sizeof(t_list));
+	if (buf == (void *)0)
+		return ((void *)0);
+	buf->content = content;
+	buf->next = (void *)0;
+	return (buf);
 }

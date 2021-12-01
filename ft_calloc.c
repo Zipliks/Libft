@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 16:54:10 by jsewer            #+#    #+#             */
-/*   Updated: 2021/10/22 16:55:24 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/11/16 17:30:18 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char	*s;
+	unsigned char	*buf;
+	size_t			i;
 
-	s = malloc(count * size);
-	if (!s)
-		return (NULL);
-	ft_bzero(s, count * size);
-	return (s);
+	i = 0;
+	buf = (unsigned char *)malloc(count * size);
+	if (buf == (void *)0)
+		return ((void *)0);
+	while (i < count * size)
+		buf[i++] = '\0';
+	return (buf);
 }

@@ -6,7 +6,7 @@
 /*   By: jsewer <jsewer@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 16:49:47 by jsewer            #+#    #+#             */
-/*   Updated: 2021/11/13 19:42:37 by jsewer           ###   ########.fr       */
+/*   Updated: 2021/10/22 17:01:52 by jsewer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	idx;
-	size_t	jdx;
+	size_t	i;
+	size_t	j;
 
-	idx = 0;
-	jdx = 0;
+	i = 0;
+	j = 0;
 	if (!*little)
 		return ((char *)big);
-	while (big[idx] != '\0' && idx < len)
+	while (big[i] != '\0' && i < len)
 	{
-		if (little[0] == big[idx])
+		if (little[0] == big[i])
 		{
-			while (little[jdx] != '\0' && big[idx + jdx] \
-				== little[jdx] && idx + jdx < len)
+			while (little[j] != '\0' && big[i + j] == little[j] && i + j < len)
 			{
-				if (little[jdx + 1] == '\0')
-					return ((char *)&big[idx]);
-				jdx++;
+				if (little[j + 1] == '\0')
+					return ((char *)&big[i]);
+				j++;
 			}
 		}
-		idx++;
+		i++;
 	}
 	return (NULL);
 }
